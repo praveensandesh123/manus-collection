@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manu's Collection - Literary & Vintage Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <style>
+        :root {
+            --vintage-dark: #2d182b;
+            --vintage-gold: #c5a059;
+            --vintage-bg: #faf6f0;
+            --card-bg: #ffffff;
+            --text-color: #2b2b2b;
+            --accent-purple: #6b4c6e;
+            --light-purple: #f3ebf5;
+            --border-color: #e2d7c7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--vintage-bg);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Number Clear Styling */
+        .price-text, .price-num, .calc-num, input, button, .badge-num {
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px;
+        }
+
+        /* Top Notification Bar */
+        .top-bar {
+            background-color: var(--vintage-dark);
+            color: #ffffff;
+            text-align: center;
+            padding: 9px 15px;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Header Navigation */
+        header {
+            background: #ffffff;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--vintage-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            color: var(--vintage-dark);
+            background: #fdfaf6;
+        }
+
+        .brand-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--vintage-dark);
+            letter-spacing: 1.5px;
+            font-family: 'Cinzel', serif;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--vintage-dark);
+            margin-left: 22px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--vintage-gold);
+        }
+
+        /* Hero Banner Matching Reference Image 2 */
+        .hero-banner-v2 {
+            background: linear-gradient(135deg, #f7f1e5 0%, #ede3d3 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 40px 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner-card {
+            background: #fdfaf4;
+            border: 2px solid #e8decb;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 1100px;
+            padding: 35px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(74, 52, 72, 0.08);
+            position: relative;
+            background-image: radial-gradient(#e5dbca 0.75px, transparent 0.75px);
+            background-size: 14px 14px;
+        }
+
+        .banner-left-decor {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 320px;
+        }
+
+        .decor-img-box img {
+            width: 130px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            border: 2px solid #fff;
+        }
+
+        .banner-center-brand {
+            text-align: center;
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+
+        .banner-mono-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px auto;
+            border-radius: 50%;
+            background: #fbf6ee;
+            border: 2px solid var(--vintage-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--vintage-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .banner-title-main {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--vintage-dark);
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .banner-sub-categories {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #7a6552;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 8px 0;
+        }
+
+        .banner-edition-tag {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--accent-purple);
+            margin-top: 4px;
+        }
+
+        .banner-right-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 280px;
+            border-left: 1px solid #e0d4c0;
+            padding-left: 25px;
+        }
+
+        .feat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: #4a3d4d;
+            font-weight: 600;
+        }
+
+        .feat-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--light-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--vintage-dark);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        /* Section Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto 70px auto;
+            padding: 0 20px;
+        }
+
+        .category-header-title {
+            text-align: center;
+            margin: 45px 0 25px 0;
+            position: relative;
+        }
+
+        .category-header-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--vintage-dark);
+            letter-spacing: 2px;
+            display: inline-block;
+            background: var(--vintage-bg);
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-header-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background: #e0d4c0;
+            z-index: 1;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            padding-bottom: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+            border-color: var(--vintage-gold);
+        }
+
+        .product-card-img {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #fdfaf6;
+        }
+
+        .product-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-card-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 12px 15px;
+        }
+
+        .product-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--vintage-dark);
+            margin-bottom: 8px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-price {
+            font-size: 1.05rem;
+            color: var(--vintage-dark);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .koko-badge {
+            font-size: 0.78rem;
+            background: var(--light-purple);
+            color: var(--accent-purple);
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .btn-add-cart {
+            width: 88%;
+            padding: 10px;
+            border: 1.5px solid var(--vintage-dark);
+            background: transparent;
+            color: var(--vintage-dark);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+            margin: 0 auto;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--vintage-dark);
+            color: white;
+        }
+
+        /* Modal Design */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.65);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-card {
+            background: white;
+            width: 92%;
+            max-width: 820px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            position: relative;
+            max-height: 92vh;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #888;
+            z-index: 10;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--vintage-dark);
+        }
+
+        .modal-left {
+            width: 40%;
+            background: #fdfaf6;
+        }
+
+        .modal-left img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-right {
+            width: 60%;
+            padding: 25px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+        }
+
+        .modal-header-section {
+            border-bottom: 2px solid #f2eaee;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 1.35rem;
+            color: var(--vintage-dark);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+        }
+
+        .modal-price-tag {
+            font-size: 1.3rem;
+            color: #922724;
+            font-weight: 800;
+            margin-top: 4px;
+        }
+
+        .delivery-promise-banner {
+            background: #f0f7f4;
+            border: 1px solid #c2e2d4;
+            color: #1b6343;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .selection-label {
+            font-weight: 700;
+            font-size: 0.82rem;
+            margin-bottom: 8px;
+            display: block;
+            color: var(--vintage-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Horizontal Rows for Payment & Delivery */
+        .horizontal-row-options {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .horizontal-option-card {
+            flex: 1;
+            border: 1.5px solid #e0d6c8;
+            border-radius: 8px;
+            padding: 8px 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+            background: #fdfbf7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .horizontal-option-card:hover {
+            border-color: var(--vintage-gold);
+        }
+
+        .horizontal-option-card.selected {
+            border-color: var(--vintage-dark);
+            background: #f5ebf2;
+            box-shadow: 0 2px 6px rgba(45, 24, 43, 0.12);
+        }
+
+        .horizontal-option-card input[type="radio"] {
+            margin-bottom: 3px;
+            accent-color: var(--vintage-dark);
+        }
+
+        .horizontal-option-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--vintage-dark);
+            line-height: 1.2;
+        }
+
+        .horizontal-option-price {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #665566;
+        }
+
+        /* Order Summary Table */
+        .order-summary-box {
+            background: #faf5ee;
+            border: 1px solid #e8decb;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        .summary-row.total-row {
+            border-top: 1.5px dashed #d6c6b0;
+            padding-top: 8px;
+            margin-top: 6px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--vintage-dark);
+        }
+
+        .discount-text {
+            color: #2e7d32;
+            font-weight: 700;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 9px 12px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 0.88rem;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--vintage-dark);
+        }
+
+        .btn-pay-order {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-pay-order:hover {
+            background: #1eb956;
+            transform: translateY(-2px);
+        }
+
+        @media(max-width: 768px) {
+            .banner-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+            .banner-left-decor {
+                display: none;
+            }
+            .banner-right-features {
+                border-left: none;
+                border-top: 1px solid #e0d4c0;
+                padding-left: 0;
+                padding-top: 15px;
+                margin-top: 15px;
+                width: 100%;
+            }
+            .modal-card {
+                flex-direction: column;
+            }
+            .modal-left, .modal-right {
+                width: 100%;
+            }
+            .modal-left {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        ✨ FREE LOCAL DELIVERY ON ORDERS OVER LKR 10,000 | SPECIAL GIFT INCLUDED!
+    </div>
+
+    <header>
+        <a href="#" class="brand-logo">
+            <div class="logo-circle">M</div>
+            <div class="brand-name">MANU'S COLLECTION</div>
+        </a>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Vintage Gifts</a>
+            <a href="#">Flower Bouquets</a>
+            <a href="#">Artisan Cakes</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Banner Matching Reference Image 2 -->
+    <div class="hero-banner-v2">
+        <div class="banner-card">
+            <div class="banner-left-decor">
+                <div class="decor-img-box">
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=400&q=80" alt="Vintage Gifts Decor">
+                </div>
+            </div>
+
+            <div class="banner-center-brand">
+                <div class="banner-mono-logo">M</div>
+                <div class="banner-title-main">MANU'S COLLECTION</div>
+                <div class="banner-sub-categories">GIFTS &bull; FLOWERS &bull; CAKES</div>
+                <div class="banner-edition-tag">Literary & Vintage Edition</div>
+            </div>
+
+            <div class="banner-right-features">
+                <div class="feat-item">
+                    <div class="feat-icon">🎁</div>
+                    <span>Thoughtful Gifts for every occasion</span>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">🌸</div>
+                    <span>Beautiful Flowers that speak from heart</span>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">🎂</div>
+                    <span>Delicious Cakes made with love</span>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">📚</div>
+                    <span>Curated for book lovers & dreamers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Sections -->
+    <div class="container">
+
+        <!-- 1. VINTAGE GIFTS SECTION -->
+        <div class="category-header-title">
+            <h2>VINTAGE GIFTS COLLECTION</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" onclick="openProduct('Vintage Book Candle Gift Set', 8500, 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="Gift Set">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Vintage Book Candle Gift Set</div>
+                    <div class="product-price price-num">LKR 8,500</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 3,173.33 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openProduct('The Antiquarian Delight Hamper', 28000, 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80" alt="Antiquarian Hamper">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">The Antiquarian Delight Hamper</div>
+                    <div class="product-price price-num">LKR 28,000</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 10,453.33 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openProduct('Vintage Silk Tea Scarf', 6500, 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=800&q=80" alt="Silk Scarf">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Vintage Silk Tea Scarf</div>
+                    <div class="product-price price-num">LKR 6,500</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 2,426.66 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openProduct('Letter-pressed Journal Set', 9900, 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80" alt="Journal Set">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Letter-pressed Journal Set</div>
+                    <div class="product-price price-num">LKR 9,900</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 3,696.00 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. FLOWER BOUQUETS SECTION -->
+        <div class="category-header-title">
+            <h2>ELEGANT FLOWER BOUQUETS</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" onclick="openProduct('Lavish Lavender Dream Bouquet', 12500, 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80" alt="Lavender Bouquet">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Lavish Lavender Dream</div>
+                    <div class="product-price price-num">LKR 12,500</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 4,666.66 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openProduct('Classic Velvet Red Roses', 14800, 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80" alt="Red Roses">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Classic Velvet Red Roses</div>
+                    <div class="product-price price-num">LKR 14,800</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 5,525.33 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openProduct('Soft Pastel Bloom Bouquet', 11000, 'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80" alt="Pastel Bouquet">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Soft Pastel Bloom Bouquet</div>
+                    <div class="product-price price-num">LKR 11,000</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 4,106.66 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openProduct('White Lily & Rose Elegance', 16500, 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80" alt="Lily Bouquet">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">White Lily & Rose Elegance</div>
+                    <div class="product-price price-num">LKR 16,500</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 6,160.00 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. ARTISAN CAKES SECTION -->
+        <div class="category-header-title">
+            <h2>ARTISAN CAKES COLLECTION</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" onclick="openProduct('Heirloom Orchard Cake (3-tier)', 18500, 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80" alt="3 Tier Cake">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Heirloom Orchard Cake (3-tier)</div>
+                    <div class="product-price price-num">LKR 18,500</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 6,906.66 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openProduct('Vintage Lavender Berry Cake', 13500, 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80" alt="Berry Cake">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Vintage Lavender Berry Cake</div>
+                    <div class="product-price price-num">LKR 13,500</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 5,040.00 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openProduct('Royal Dark Chocolate Fudge', 15000, 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80')">
+                <div class="product-card-img">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Chocolate Cake">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Royal Dark Chocolate Fudge</div>
+                    <div class="product-price price-num">LKR 15,000</div>
+                    <div class="koko-badge badge-num">💳 Koko: LKR 5,600.00 x 3</div>
+                    <button class="btn-add-cart">BUY NOW</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal Popup -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-card">
+            <span class="modal-close" onclick="closeProduct()">&times;</span>
+            <div class="modal-left">
+                <img id="modalImg" src="" alt="Detail View">
+            </div>
+            <div class="modal-right">
+                <div>
+                    <!-- Top Price & Title -->
+                    <div class="modal-header-section">
+                        <div class="modal-title" id="modalTitle">Product Name</div>
+                        <div class="modal-price-tag price-num" id="modalPrice">LKR 0.00</div>
+                    </div>
+
+                    <!-- Payment Option (Horizontal Row) -->
+                    <div style="margin-bottom: 12px;">
+                        <label class="selection-label">Select Payment Method:</label>
+                        <div class="horizontal-row-options">
+                            <div class="horizontal-option-card selected" onclick="selectPayment('Bank Deposit / Online Banking', 0, this)">
+                                <input type="radio" name="payment" checked>
+                                <div class="horizontal-option-title">Direct Bank Deposit</div>
+                                <div class="horizontal-option-price price-num">Standard</div>
+                            </div>
+
+                            <div class="horizontal-option-card" onclick="selectPayment('Koko Pay (3 Installments)', 0.12, this)">
+                                <input type="radio" name="payment">
+                                <div class="horizontal-option-title">Koko Pay</div>
+                                <div class="horizontal-option-price price-num">3x Installments</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Service Option (Horizontal Row) -->
+                    <div style="margin-bottom: 12px;">
+                        <label class="selection-label">Select Delivery Service:</label>
+                        <div class="horizontal-row-options">
+                            <div class="horizontal-option-card selected" onclick="selectDelivery('Koombiyo Courier', 480, this)">
+                                <input type="radio" name="delivery" checked>
+                                <div class="horizontal-option-title">Koombiyo</div>
+                                <div class="horizontal-option-price price-num">LKR 480</div>
+                            </div>
+
+                            <div class="horizontal-option-card" onclick="selectDelivery('SL Post Registered', 350, this)">
+                                <input type="radio" name="delivery">
+                                <div class="horizontal-option-title">SL Post</div>
+                                <div class="horizontal-option-price price-num">LKR 350</div>
+                            </div>
+
+                            <div class="horizontal-option-card" onclick="selectDelivery('Domex Courier', 580, this)">
+                                <input type="radio" name="delivery">
+                                <div class="horizontal-option-title">Domex</div>
+                                <div class="horizontal-option-price price-num">LKR 580</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Promise Note -->
+                    <div class="delivery-promise-banner">
+                        <span>🚚</span>
+                        <span>මෙම ඇණවුම හෙට දින සිට දින 5ක් ඇතුලත ඔබට Deliver කරනු ලැබේ.</span>
+                    </div>
+
+                    <!-- Customer Inputs -->
+                    <input type="text" id="custName" class="form-input" placeholder="ඔබගේ සම්පූර්ණ නම (Full Name)">
+                    <input type="text" id="custAddress" class="form-input" placeholder="බාරදිය යුතු ලිපිනය (Delivery Address)">
+
+                    <!-- Breakdown Box: Item, Payment, Delivery Fee, Discount, Total -->
+                    <div class="order-summary-box">
+                        <div class="summary-row">
+                            <span>Item Price:</span>
+                            <span class="price-num" id="sumItemPrice">LKR 0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Payment Method:</span>
+                            <span id="sumPayment">Bank Deposit</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Delivery Fee:</span>
+                            <span class="price-num" id="sumDeliveryFee">LKR 480.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Discount:</span>
+                            <span class="discount-text price-num" id="sumDiscount">- LKR 0.00</span>
+                        </div>
+                        <div class="summary-row total-row">
+                            <span>TOTAL:</span>
+                            <span class="price-num" id="sumTotal">LKR 0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-pay-order" onclick="submitModalOrder()">
+                    <span>📲 PAY & ORDER VIA WHATSAPP</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let basePrice = 0;
+        let selectedTitle = '';
+        let currentDeliveryName = 'Koombiyo Courier';
+        let currentDeliveryFee = 480;
+        let currentPaymentName = 'Bank Deposit / Online Banking';
+        let kokoFeePercent = 0;
+
+        function openProduct(title, price, imgUrl) {
+            selectedTitle = title;
+            basePrice = price;
+            
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalPrice').innerText = 'LKR ' + price.toLocaleString('en-US', {minimumFractionDigits: 2});
+            document.getElementById('modalImg').src = imgUrl;
+
+            document.getElementById('productModal').style.display = 'flex';
+            recalculateSummary();
+        }
+
+        function closeProduct() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        function selectDelivery(name, fee, element) {
+            currentDeliveryName = name;
+            currentDeliveryFee = fee;
+
+            let cards = element.parentElement.querySelectorAll('.horizontal-option-card');
+            cards.forEach(card => {
+                card.classList.remove('selected');
+                card.querySelector('input').checked = false;
+            });
+
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+
+            recalculateSummary();
+        }
+
+        function selectPayment(name, feePercent, element) {
+            currentPaymentName = name;
+            kokoFeePercent = feePercent;
+
+            let cards = element.parentElement.querySelectorAll('.horizontal-option-card');
+            cards.forEach(card => {
+                card.classList.remove('selected');
+                card.querySelector('input').checked = false;
+            });
+
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+
+            recalculateSummary();
+        }
+
+        function recalculateSummary() {
+            let discount = 0;
+            let totalBeforeKoko = basePrice + currentDeliveryFee;
+            let finalTotal = totalBeforeKoko;
+
+            if (kokoFeePercent > 0) {
+                let kokoCharge = totalBeforeKoko * kokoFeePercent;
+                finalTotal = totalBeforeKoko + kokoCharge;
+            } else {
+                if (basePrice >= 10000) {
+                    discount = currentDeliveryFee;
+                    finalTotal = basePrice;
+                }
+            }
+
+            document.getElementById('sumItemPrice').innerText = 'LKR ' + basePrice.toLocaleString('en-US', {minimumFractionDigits: 2});
+            document.getElementById('sumPayment').innerText = currentPaymentName.includes('Koko') ? 'Koko Pay (3x)' : 'Bank Deposit';
+            document.getElementById('sumDeliveryFee').innerText = 'LKR ' + currentDeliveryFee.toLocaleString('en-US', {minimumFractionDigits: 2});
+            document.getElementById('sumDiscount').innerText = '- LKR ' + discount.toLocaleString('en-US', {minimumFractionDigits: 2});
+            document.getElementById('sumTotal').innerText = 'LKR ' + finalTotal.toLocaleString('en-US', {minimumFractionDigits: 2});
+        }
+
+        function submitModalOrder() {
+            const name = document.getElementById('custName').value;
+            const address = document.getElementById('custAddress').value;
+
+            if(!name || !address) {
+                alert('කරුණාකර ඔබගේ නම සහ ලිපිනය ඇතුලත් කරන්න!');
+                return;
+            }
+
+            let totalText = document.getElementById('sumTotal').innerText;
+            let delFeeText = document.getElementById('sumDeliveryFee').innerText;
+            let discountText = document.getElementById('sumDiscount').innerText;
+
+            let msg = `🛍️ *MANU'S COLLECTION - NEW ORDER*%0A%0A` +
+                      `📌 *Item:* ${selectedTitle}%0A` +
+                      `💵 *Item Price:* LKR ${basePrice.toLocaleString()}%0A` +
+                      `💳 *Payment:* ${currentPaymentName}%0A` +
+                      `🚚 *Delivery:* ${currentDeliveryName} (${delFeeText})%0A` +
+                      `🎁 *Discount:* ${discountText}%0A` +
+                      `💰 *TOTAL AMOUNT:* ${totalText}%0A%0A` +
+                      `📅 *Delivery Time:* Heta sita dina 5k athulatha%0A%0A` +
+                      `👤 *Customer Name:* ${name}%0A` +
+                      `📍 *Address:* ${address}`;
+
+            window.open(`https://wa.me/94706522791?text=${msg}`, '_blank');
+        }
+    </script>
+
+    <!-- Netlify Identity Redirect Script -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+</body>
+</html>
